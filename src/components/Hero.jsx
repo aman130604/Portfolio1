@@ -1,4 +1,4 @@
-import profileImage from '../assets/FormalPIc.jpg'
+import profileImage from '../assets/Formal2.png'
 
 function Hero({ scrollToSection }) {
   const downloadCV = () => {

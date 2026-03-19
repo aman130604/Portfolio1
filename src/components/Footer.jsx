@@ -7,7 +7,7 @@ function Footer() {
         <div className="footer-content">
           <div className="footer-section">
             <h3>Aman Verma</h3>
-            <p>Full Stack Developer | DSA Enthusiast | Tech Innovator</p>
+            <p>Aspiring DevOps and Cloud Engineer</p>
           </div>
           
           <div className="footer-section">
@@ -23,8 +23,8 @@ function Footer() {
           <div className="footer-section">
             <h4>More</h4>
             <ul>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#achievements">Achievements</a></li>
+              <li><a href="#services">Tools & Platforms</a></li>
+              <li><a href="#achievements">Soft Skills</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>

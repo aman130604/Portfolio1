@@ -4,6 +4,25 @@ import { Mail, Phone, Linkedin, Github, Send, Check } from './Icons'
 
 function Contact() {
   const ref = useScrollAnimation()
+  const repositories = [
+    {
+      name: 'WheelWings',
+      description: 'Cloud-ready tour management platform',
+      link: 'https://github.com/aman130604/WheelWings'
+    },
+    {
+      name: 'SkyBot-Airport-Assistant',
+      description: 'Airport navigation chatbot project',
+      link: 'https://github.com/aman130604/SkyBot'
+    }
+  ]
+
+  const quickReviewChecklist = [
+    'Check grammar and spelling before sharing the portfolio.',
+    'Remove repeated or unnecessary words from section descriptions.',
+    'Keep each project outcome clear and measurable in one or two lines.'
+  ]
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +62,20 @@ function Contact() {
           <div className="contact-info">
             <h3>Reach out to me</h3>
             <p>I'm always open to new opportunities, collaborations, and interesting projects. Feel free to contact me anytime!</p>
+
+            <div className="repo-block">
+              <h4>Featured GitHub Repositories</h4>
+              <ul className="repo-list">
+                {repositories.map((repo) => (
+                  <li key={repo.name}>
+                    <a href={repo.link} target="_blank" rel="noopener noreferrer" className="repo-link">
+                      {repo.name}
+                    </a>
+                    <p>{repo.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
             
             <div className="contact-methods">
               <a href="mailto:amanverma130604@gmail.com" className="contact-method">
@@ -138,6 +171,15 @@ function Contact() {
                 </>
               )}
             </button>
+
+            <div className="review-checklist">
+              <h4>Quick Review Checklist</h4>
+              <ul className="plain-list">
+                {quickReviewChecklist.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </form>
         </div>
       </div>

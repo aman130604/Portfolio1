@@ -21,7 +21,7 @@ function Navigation({ activeSection, scrollToSection, downloadCV, isDarkMode, to
           <li><a onClick={() => scrollToSection('skills')} className={activeSection === 'skills' ? 'active' : ''}>Skills</a></li>
           <li><a onClick={() => scrollToSection('education')} className={activeSection === 'education' ? 'active' : ''}>Education</a></li>
           <li><a onClick={() => scrollToSection('projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</a></li>
-          <li><a onClick={() => scrollToSection('services')} className={activeSection === 'services' ? 'active' : ''}>Services</a></li>
+          <li><a onClick={() => scrollToSection('services')} className={activeSection === 'services' ? 'active' : ''}>Tools</a></li>
           <li><a onClick={() => scrollToSection('contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
           <li>
             <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle dark mode" title="Toggle dark mode">

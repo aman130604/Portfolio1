@@ -34,7 +34,7 @@ function Projects() {
       description: "Web-based theatre ticket booking system with 2D array-based seat management, dynamic pricing, and real-time UI synchronization using JavaScript DOM manipulation.",
       technologies: ["JavaScript", "HTML/CSS", "Data Structures"],
       date: "Apr 2025 - May 2025",
-      link: "https://github.com/aman130604",
+      link: "moviemania69.netlify.app",
       category: "Frontend",
       image: MovieManiaImg,
       features: ["Seat Selection", "Dynamic Pricing", "Cart System", "Booking Confirmation"]
