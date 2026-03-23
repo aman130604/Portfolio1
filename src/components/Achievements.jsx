@@ -1,6 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Trophy, Star, Award, Certificate } from './Icons'
-import certificateImg from '../assets/IIT ROPAR.png'
 
 function Achievements() {
   const ref = useScrollAnimation()
@@ -10,7 +9,7 @@ function Achievements() {
   title: "1st Position - Full Throttle (ADVITIYA'24)",
   description: "Secured 1st position in the 'Full Throttle' event at ADVITIYA'24, IIT Ropar, as part of team KYB, demonstrating strong teamwork, technical skills, and competitive problem-solving.",
   Icon: Trophy,
-  certificateImage: certificateImg
+  certificateImage: "https://drive.google.com/file/d/1puYyVPc51OnVBmAmvD3SsVrD-tXIzFib/view?usp=drive_link"
 },
     {
       id: 2,
