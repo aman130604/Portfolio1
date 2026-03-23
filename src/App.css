@@ -411,6 +411,10 @@ body.dark-theme-body {
   box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
 }
 
+.portfolio.dark-theme .view-btn {
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
+}
+
 .portfolio.dark-theme .project-link-secondary {
   background: transparent;
   color: var(--text);
@@ -1350,6 +1354,26 @@ body.dark-theme-body {
 }
 
 .cert-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(14, 165, 233, 0.35);
+  color: white;
+}
+
+.view-btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+}
+
+.view-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(14, 165, 233, 0.35);
   color: white;

@@ -5,22 +5,25 @@ function Achievements() {
   const ref = useScrollAnimation()
   const achievements = [
     {
-      id: 1,
-      title: "550+ DSA Problems Solved",
-      description: "Solved over 150 Data Structures and Algorithms problems on LeetCode, GeeksforGeeks, and HackerRank",
-      Icon: Trophy
-    },
+  id: 1,
+  title: "1st Position - Full Throttle (ADVITIYA'24)",
+  description: "Secured 1st position in the 'Full Throttle' event at ADVITIYA'24, IIT Ropar, as part of team KYB, demonstrating strong teamwork, technical skills, and competitive problem-solving.",
+  Icon: Trophy,
+  certificateImage: "/src/assets/IIT ROPAR.png"
+},
     {
       id: 2,
-      title: "5-Star on HackerRank",
+      title: "5-Star C++ badge on HackerRank",
       description: "Achieved 5-Star rating in C++ on HackerRank platform, showcasing competitive programming expertise",
-      Icon: Star
+      Icon: Star,
+      profileLink: "https://www.hackerrank.com/profile/amanverma130604"
     },
     {
       id: 3,
       title: "5 star Problem Solving badge on HackerRank",
       description: "Earned the prestigious 5-star Problem Solving badge on HackerRank, demonstrating advanced problem-solving skills and consistent performance in coding challenges.",
-      Icon: Star
+      Icon: Star,
+      profileLink: "https://www.hackerrank.com/profile/amanverma130604"
     }
   ]
 
@@ -78,6 +81,26 @@ function Achievements() {
                   <div className="achievement-content">
                     <h4>{item.title}</h4>
                     <p>{item.description}</p>
+                    {item.certificateImage && (
+                      <a
+                        href={item.certificateImage}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="view-btn"
+                      >
+                        View Certificate
+                      </a>
+                    )}
+                    {item.profileLink && (
+                      <a
+                        href={item.profileLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="view-btn"
+                      >
+                        View Profile
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

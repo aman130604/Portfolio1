@@ -16,7 +16,7 @@ function Hero({ scrollToSection }) {
         <h1 className="fade-in-up">Aman Verma</h1>
         <p className="hero-subtitle fade-in-up delay-1">Full Stack Developer | DSA Enthusiast | Tech Innovator</p>
         <p className="hero-description fade-in-up delay-2">
-          Building interactive and responsive web experiences with React, Node.js, and modern technologies.
+        Transforming ideas into efficient, user-centric digital experiences using cutting-edge web technologies.
         </p>
         <div className="hero-buttons fade-in-up delay-3">
           <button className="btn btn-primary" onClick={downloadCV}>Download Resume</button>

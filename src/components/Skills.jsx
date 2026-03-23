@@ -64,7 +64,8 @@ function Skills() {
       skills: [
         { name: "C++", percentage: 85 },
         { name: "JavaScript", percentage: 88 },
-        { name: "Python", percentage: 80 }
+        { name: "C", percentage: 80 },
+        { name: "PHP", percentage: 82 }
       ]
     },
     {
@@ -82,7 +83,9 @@ function Skills() {
       skills: [
         { name: "Node.js", percentage: 80 },
         { name: "MongoDB", percentage: 82 },
-        { name: "MySQL", percentage: 78 }
+        { name: "MySQL", percentage: 78 },
+       
+        {name: "Laravel", percentage: 70}
       ]
     },
     {
@@ -91,16 +94,17 @@ function Skills() {
       skills: [
         { name: "Git/GitHub", percentage: 85 },
         { name: "Vite", percentage: 82 },
-        { name: "VS Code", percentage: 90 }
+        { name: "VS Code", percentage: 90 },
+        {name : "Firebase", percentage: 80}
       ]
     },
     {
       title: "Soft Skills",
       color: "from-indigo-500 to-blue-500",
       skills: [
-        { name: "Problem Solving", percentage: 88 },
-        { name: "Communication", percentage: 85 },
-        { name: "Teamwork", percentage: 87 }
+        { name: "Strategic Problem Resolution", percentage: 88 },
+        { name: "Effective Communication & Articulation", percentage: 85 },
+        { name: "Team Synergy & Coordination", percentage: 87 }
       ]
     }
   ]
