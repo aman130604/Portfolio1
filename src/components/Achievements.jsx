@@ -1,8 +1,29 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Trophy, Star, Award, Certificate } from './Icons'
+import { motion } from 'framer-motion'
 
 function Achievements() {
   const ref = useScrollAnimation()
+  const columnVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        ease: 'easeInOut'
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeInOut' }
+    }
+  }
+
   const achievements = [
     {
   id: 1,
@@ -72,9 +93,20 @@ function Achievements() {
               <Award />
               <h3 className="subsection-title">Achievements</h3>
             </div>
-            <div className="achievements-list">
-              {achievements.map((item) => (
-                <div key={item.id} className="achievement-item fade-in">
+            <motion.div
+              className="achievements-list"
+              variants={columnVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {achievements.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  className="achievement-item fade-in"
+                  variants={itemVariants}
+                  transition={{ delay: index * 0.08, ease: 'easeInOut' }}
+                >
                   <div className="achievement-icon-wrapper">
                     <item.Icon />
                   </div>
@@ -102,9 +134,9 @@ function Achievements() {
                       </a>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           <div className="certifications-section">
@@ -112,9 +144,20 @@ function Achievements() {
               <Certificate />
               <h3 className="subsection-title">Certifications</h3>
             </div>
-            <div className="certifications-list">
-              {certifications.map((cert) => (
-                <div key={cert.id} className="certification-item fade-in">
+            <motion.div
+              className="certifications-list"
+              variants={columnVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={cert.id}
+                  className="certification-item fade-in"
+                  variants={itemVariants}
+                  transition={{ delay: index * 0.08, ease: 'easeInOut' }}
+                >
                   <div className="certification-number">{cert.id}</div>
                   <div className="cert-content">
                     <h4>{cert.title}</h4>
@@ -131,9 +174,9 @@ function Achievements() {
                       View Certification
                     </a>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

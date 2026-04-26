@@ -13,27 +13,35 @@ import Footer from './components/Footer'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
-  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark')
-      return
-    }
+    const sectionIds = ['home', 'about', 'skills', 'education', 'projects', 'services', 'achievements', 'contact']
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setIsDarkMode(prefersDark)
+    if (!sections.length) return undefined
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id)
+        }
+      },
+      {
+        threshold: [0.25, 0.45, 0.65],
+        rootMargin: '-20% 0px -45% 0px'
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => observer.disconnect()
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')
-    document.body.classList.toggle('dark-theme-body', isDarkMode)
-
-    return () => {
-      document.body.classList.remove('dark-theme-body')
-    }
-  }, [isDarkMode])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -50,18 +58,12 @@ function App() {
     link.click()
   }
 
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev)
-  }
-
   return (
-    <div className={`portfolio ${isDarkMode ? 'dark-theme' : ''}`}>
+    <div className="portfolio dark-theme">
       <Navigation 
         activeSection={activeSection}
         scrollToSection={scrollToSection}
         downloadCV={downloadCV}
-        isDarkMode={isDarkMode}
-        toggleTheme={toggleTheme}
       />
       <Hero scrollToSection={scrollToSection} downloadCV={downloadCV} />
       <About />

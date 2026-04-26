@@ -2,9 +2,30 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import WheelWingsImg from '../assets/WheelWings.png'
 import SkyBotImg from '../assets/SkyBot.png'
 import MovieManiaImg from '../assets/MovieMania.png'
+import { motion } from 'framer-motion'
 
 function Projects() {
   const ref = useScrollAnimation()
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.14,
+        ease: 'easeInOut'
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 34 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeInOut' }
+    }
+  }
+
   const projects = [
     {
       id: 1,
@@ -48,9 +69,27 @@ function Projects() {
           <h2 className="section-title">My Projects</h2>
           <p className="section-subtitle">Innovative solutions crafted with passion and cutting-edge technologies</p>
         </div>
-        <div className="projects-grid">
+        <motion.div
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {projects.map((project) => (
-            <div key={project.id} className="project-card fade-in">
+            <motion.article
+              key={project.id}
+              className="project-card fade-in"
+              variants={cardVariants}
+              whileHover={{
+                y: -10,
+                scale: 1.01,
+                rotateX: 2.5,
+                rotateY: -2.5,
+                transition: { duration: 0.25, ease: 'easeInOut' }
+              }}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
               <div className="project-showcase">
                 <img src={project.image} alt={project.title} className="project-image" />
                 <div className="project-overlay">
@@ -85,9 +124,9 @@ function Projects() {
                   View Project →
                 </a>
               </div>
-            </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

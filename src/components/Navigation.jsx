@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
-function Navigation({ activeSection, scrollToSection, downloadCV, isDarkMode, toggleTheme }) {
+function Navigation({ activeSection, scrollToSection, downloadCV }) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -12,7 +13,12 @@ function Navigation({ activeSection, scrollToSection, downloadCV, isDarkMode, to
   }, [])
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <motion.nav
+      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+    >
       <div className="nav-container">
         <div className="logo">AV</div>
         <ul className="nav-menu">
@@ -23,15 +29,10 @@ function Navigation({ activeSection, scrollToSection, downloadCV, isDarkMode, to
           <li><a onClick={() => scrollToSection('projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</a></li>
           <li><a onClick={() => scrollToSection('services')} className={activeSection === 'services' ? 'active' : ''}>Tools</a></li>
           <li><a onClick={() => scrollToSection('contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
-          <li>
-            <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle dark mode" title="Toggle dark mode">
-              {isDarkMode ? 'Light' : 'Dark'}
-            </button>
-          </li>
           <li><button className="cv-btn" onClick={downloadCV}>Download CV</button></li>
         </ul>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 

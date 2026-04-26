@@ -1,9 +1,32 @@
 import { useState, useEffect } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { motion } from 'framer-motion'
 
 function Skills() {
   const [animate, setAnimate] = useState(false)
   const ref = useScrollAnimation()
+  const skillsContainerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        ease: 'easeInOut'
+      }
+    }
+  }
+
+  const skillCardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.55,
+        ease: 'easeInOut'
+      }
+    }
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimate(true), 100)
@@ -112,13 +135,31 @@ function Skills() {
   return (
     <section id="skills" className="skills parallax-section" data-parallax-speed="0.16" ref={ref}>
       <div className="container">
-        <div className="section-header">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeInOut' }}
+        >
           <h2 className="section-title">Skills & Expertise</h2>
           <p className="section-subtitle">Master of languages, frameworks, and tools</p>
-        </div>
-        <div className="skills-grid">
+        </motion.div>
+        <motion.div
+          className="skills-grid"
+          variants={skillsContainerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+            <motion.div
+              key={index}
+              className="skill-category fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+              variants={skillCardVariants}
+              whileHover={{ y: -8, transition: { duration: 0.2, ease: 'easeInOut' } }}
+            >
               <div className="skill-category-header">
                 <div className={`category-icon gradient-${category.color.split('-')[1]}`}>
                   {getIconForCategory(category.title)}
@@ -133,20 +174,23 @@ function Skills() {
                       <span className="skill-percentage">{skill.percentage}%</span>
                     </div>
                     <div className="skill-bar">
-                      <div 
+                      <motion.div
                         className="skill-progress" 
                         style={{ 
-                          width: animate ? `${skill.percentage}%` : '0%',
                           transition: `width 1.2s cubic-bezier(0.4, 0, 0.2, 1) ${skillIndex * 0.1}s`
                         }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: animate ? `${skill.percentage}%` : '0%' }}
+                        viewport={{ once: true, amount: 0.6 }}
+                        transition={{ duration: 0.9, delay: skillIndex * 0.08, ease: 'easeInOut' }}
                       />
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

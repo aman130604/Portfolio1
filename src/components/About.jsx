@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { motion } from 'framer-motion'
 
 function About() {
   const ref = useScrollAnimation()
@@ -6,8 +7,22 @@ function About() {
   return (
     <section id="about" className="about parallax-section" data-parallax-speed="0.12" ref={ref}>
       <div className="container">
-        <h2 className="section-title">About Me</h2>
-        <div className="about-content">
+        <motion.h2
+          className="section-title"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.55, ease: 'easeInOut' }}
+        >
+          About Me
+        </motion.h2>
+        <motion.div
+          className="about-content"
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.65, delay: 0.1, ease: 'easeInOut' }}
+        >
           <div className="about-text-section">
             <p className="about-text">
               I'm a passionate Full Stack Developer and Computer Science student at Lovely Professional University. 
@@ -25,7 +40,7 @@ function About() {
               <span>Gaya, Bihar, India</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
